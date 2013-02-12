@@ -54,8 +54,6 @@ require('assert').deepEqual(actual, expected);
 
 ## API
 
-### `parse()`
-
 TODO
 
 ## Tests
