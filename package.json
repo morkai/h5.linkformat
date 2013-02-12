@@ -1,0 +1,35 @@
+{
+  "name": "h5.linkformat",
+  "version": "0.0.0",
+  "description": "Implementation of Constrained RESTful Environments (CoRE) Link Format for node.js and the browser.",
+  "keywords": ["coap", "core", "rest", "link", "format", "rfc", "rfc6690", "rfc5988"],
+  "license": "MIT",
+  "homepage": "https://github.com/morkai/h5.linkformat",
+  "author": {
+    "name": "Łukasz Walukiewicz",
+    "email": "lukasz@walukiewicz.eu",
+    "url": "http://lukasz.walukiewicz.eu/"
+  },
+  "bugs": "https://github.com/morkai/h5.linkformat/issues",
+  "repository": {
+    "type": "git",
+    "url":  "http://github.com/morkai/h5.linkformat.git"
+  },
+  "engine": ["node >=0.8"],
+  "main": "./lib/index",
+  "devDependencies": {
+    "requirejs": "2.1.x",
+    "should": "1.2.x",
+    "grunt": "0.4.x",
+    "grunt-cli": "0.1.x",
+    "grunt-contrib-clean": "git://github.com/gruntjs/grunt-contrib-clean.git#a6b2940430",
+    "grunt-contrib-jshint": "0.1.x",
+    "grunt-simple-mocha": "0.3.x",
+    "grunt-istanbul": "0.1.x",
+    "grunt-env": "git://github.com/onehealth/grunt-env.git#0.4.0"
+  },
+  "scripts": {
+    "test": "grunt",
+    "amd": "r.js -convert lib/ build/lib-amd/h5.linkformat/"
+  }
+}
