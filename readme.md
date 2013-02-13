@@ -7,9 +7,10 @@ Partial implementation of the
 and [draft-bormann-core-links-json-01](http://tools.ietf.org/html/draft-bormann-core-links-json-01)
 *(Representing CoRE Link Collections in JSON)* for node.js and the browser.
 
-The following features are not supported
+Why partial? Because the following features are not supported
 (see [Link Format](http://tools.ietf.org/html/rfc6690#section-2) section of the RFC):
-  - `URI-Reference` validation in `link-value`,
+  - validation of the parameter values (e.g. `foobar` will be accepted as a value
+    for the `sz` parameter).
   - `ext-name-star` in `link-extension` (see [RFC-2231](http://tools.ietf.org/html/rfc2231)).
 
 ## TODO
@@ -21,36 +22,7 @@ The following features are not supported
 
 ## Usage
 
-### Parsing
-
-```js
-var parse = require('h5.linkformat').parse;
-
-var input = [
-  '</sensors>;ct=40;title="Sensor Index",',
-  '</sensors/temp>;rt="temperature-c";if="sensor",',
-  '</sensors/light>;rt="light-lux";if="sensor",',
-  '<http://www.example.com/sensors/t123>;anchor="/sensors/temp";rel="describedby",',
-  '</t>;anchor="/sensors/temp";rel="alternate",'
-];
-
-var expected = [
-  {"href": "/sensors", "ct": "40", "title": "Sensor Index"},
-  {"href": "/sensors/temp", "rt":"temperature-c", "if":"sensor"},
-  {"href": "/sensors/light", "rt": "light-lux", "if": "sensor"},
-  {"href": "http://www.example.com/sensors/t123", "anchor": "/sensors/temp", "rel": "describedby"},
-  {"href": "/t", "anchor": "/sensors/temp", "rel":"alternate"}
-];
-
-var options = {
-  allowMultiple: true,
-  coerce: false
-};
-
-var actual = parse(input.join(''), options);
-
-require('assert').deepEqual(actual, expected);
-```
+TODO
 
 ## API
 
