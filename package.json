@@ -2,7 +2,7 @@
   "name": "h5.linkformat",
   "version": "0.0.0",
   "description": "Implementation of Constrained RESTful Environments (CoRE) Link Format for node.js and the browser.",
-  "keywords": ["coap", "core", "rest", "link", "format", "rfc", "rfc6690", "rfc5988"],
+  "keywords": ["h5", "core", "rest", "link", "link-format", "web-linking", "rfc", "rfc6690", "rfc5988", "coap"],
   "license": "MIT",
   "homepage": "https://github.com/morkai/h5.linkformat",
   "author": {
