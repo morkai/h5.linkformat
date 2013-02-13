@@ -15,8 +15,6 @@ Why partial? Because the following features are not supported
 
 ## TODO
 
-  - Validation
-  - Serialization to string
   - Documentation
   - npm publish
 
