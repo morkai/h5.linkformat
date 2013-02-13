@@ -5,7 +5,7 @@
 
 require('should');
 
-var parse = require(process.env.LIB_FOR_TESTS_DIR || '../lib').parse;
+var parse = require((process.env.LIB_FOR_TESTS_DIR || '../lib') + '/parse');
 
 describe('parse', function()
 {
