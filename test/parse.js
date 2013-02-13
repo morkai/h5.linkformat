@@ -158,31 +158,43 @@ describe('parse', function()
     ]);
   });
 
-  it("should allow param names with `-`", function()
+  it("should allow special characters in param names", function()
   {
-    parse('</foo>;foo-bar').should.be.eql([
-      {href: '/foo', 'foo-bar': null}
+    parse('</foo>;a0!#$&+-.^_`|~=0;bar=1').should.be.eql([
+      {href: '/foo', 'a0!#$&+-.^_`|~': '0', bar: '1'}
     ]);
   });
 
-  it("should allow param names with `_`", function()
+  it("should allow special characters in unquoted param values", function()
   {
-    parse('</foo>;foo_bar').should.be.eql([
-      {href: '/foo', 'foo_bar': null}
+    parse('</foo>;foo=!#$%&\'()*+-./0:<=>?@a[]^_`{|}~;bar=1').should.be.eql([
+      {href: '/foo', foo: '!#$%&\'()*+-./0:<=>?@a[]^_`{|}~', bar: '1'}
     ]);
   });
 
-  it("should allow unquoted param values with `-`", function()
+  it("should evaluate backslash characters in quoted param values by default", function()
   {
-    parse('</foo>;foo=foo-bar').should.be.eql([
-      {href: '/foo', foo: 'foo-bar'}
+    parse('</foo>;foo="This\\n\\"should\\"\\\\nwork!"').should.be.eql([
+      {href: '/foo', foo: 'This\n"should"\\nwork!'}
     ]);
   });
 
-  it("should allow unquoted param values with `_`", function()
+  it("should convert CR LF in quoted param values to a single space by default", function()
   {
-    parse('</foo>;foo=foo_bar').should.be.eql([
-      {href: '/foo', foo: 'foo_bar'}
+    parse('</foo>;foo="Hello\r\nWorld!"').should.be.eql([
+      {href: '/foo', foo: "Hello World!"}
+    ]);
+  });
+
+  it("should throw an Error if not escaped LF character is present in the quoted param value", function()
+  {
+    parse.bind(null, '</foo>;foo="Hello\nWorld!"').should.throw();
+  });
+
+  it("should use the specified quoted value converter", function()
+  {
+    parse('</foo>;foo="foo"', {quotedValueConverter: function() { return 'bar'; }}).should.be.eql([
+      {href: '/foo', foo: 'bar'}
     ]);
   });
 });
