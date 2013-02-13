@@ -1,6 +1,6 @@
 'use strict';
 
-var parse = require('../lib').parse;
+var parse = require('../lib/parse');
 
 var input = [
   '</sensors>;ct=40;title="Sensor Index",',
@@ -9,8 +9,8 @@ var input = [
   '<http://www.example.com/sensors/t123>'
     + ';anchor="/sensors/temp"'
     + ';rel="describedby",',
-  '</t>;anchor="/sensors/temp";rel="alternate",'
-];
+  '</t>;anchor="/sensors/temp";rel="alternate"'
+].join('');
 
 var expected = [
   {"href": "/sensors", "ct": "40", "title": "Sensor Index"},
@@ -29,6 +29,16 @@ var options = {
   coerce: false
 };
 
-var actual = parse(input.join(''), options);
+var actual = parse(input, options);
 
-require('assert').deepEqual(actual, expected);
+console.log('Input:');
+console.log('------');
+console.log(input);
+console.log();
+console.log('Expected:');
+console.log('---------');
+console.log(expected);
+console.log();
+console.log('Actual:');
+console.log('-------');
+console.log(actual);

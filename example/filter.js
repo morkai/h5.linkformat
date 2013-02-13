@@ -18,4 +18,14 @@ var expected = [links[1], links[2]];
 
 var actual = filter(links, {href: '*/sensors*', if: 'sensor'});
 
-require('assert').deepEqual(actual, expected);
+console.log('Links:');
+console.log('------');
+console.log(links);
+console.log();
+console.log('Expected:');
+console.log('---------');
+console.log(expected);
+console.log();
+console.log('Actual:');
+console.log('-------');
+console.log(actual);

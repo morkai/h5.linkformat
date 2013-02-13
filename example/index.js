@@ -9,14 +9,24 @@ var input = [
   '<http://www.example.com/sensors/t123>'
     + ';anchor="/sensors/temp"'
     + ';rel="describedby",',
-  '</t>;anchor="/sensors/temp";rel="alternate",'
+  '</t>;anchor="/sensors/temp";rel="alternate"'
 ].join('');
 
 var expected = [
-  {"href": "/sensors/temp", "rt":"temperature-c", "if":"sensor"},
-  {"href": "/sensors/light", "rt": "light-lux", "if": "sensor"}
-];
+  '</sensors/temp>;rt="temperature-c",if="sensor"',
+  '</sensors/light>;rt="light-lux",if="sensor"'
+].join(',');
 
-var actual = linkFormat.parse(input).filter({if: 'sensor'});
+var actual = linkFormat.parse(input).filter({if: 'sensor'}).toString();
 
-require('assert').deepEqual(actual, expected);
+console.log('Input:');
+console.log('------');
+console.log(input);
+console.log();
+console.log('Expected:');
+console.log('---------');
+console.log(expected);
+console.log();
+console.log('Actual:');
+console.log('-------');
+console.log(actual);
