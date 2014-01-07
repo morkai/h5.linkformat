@@ -13,7 +13,6 @@
   "maxparams": 4,
   "maxstatements": 20,
   "maxlen": 80,
-  "es5": true,
   "laxbreak": true,
   "node": true,
   "globalstrict": true,

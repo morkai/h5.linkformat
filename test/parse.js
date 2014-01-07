@@ -122,7 +122,8 @@ describe('parse', function()
   {
     parse('</foo>;num="40";null="null";true="true";false="false";str="str"', {coerce: true}).should.be.eql([
       {href: '/foo', num: '40', null: 'null', true: 'true', false: 'false', str: 'str'}
-    ]);  });
+    ]);
+  });
 
   it("should parse multiple links separated by a comma without any whitespace", function()
   {

@@ -34,7 +34,7 @@ describe('index', function()
     {
       var links = linkFormat.parse(input);
 
-      links.filter.should.be.a('function');
+      links.filter.should.be.type('function');
       links.propertyIsEnumerable('filter').should.be.eql(false);
     });
 
@@ -50,7 +50,7 @@ describe('index', function()
     {
       var links = linkFormat.parse(input);
 
-      links.toString.should.be.a('function');
+      links.toString.should.be.type('function');
       links.propertyIsEnumerable('toString').should.be.eql(false);
     });
 
